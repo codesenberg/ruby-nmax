@@ -3,11 +3,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "nmax/version"
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Anton"]
-  gem.email         = ["lsteewenson.evan@gmail.com"]
+  gem.authors       = ["xfynx"]
+  gem.email         = ["steewenson.evan@gmail.com"]
   gem.description   = %q{simple "n max numbers" extractor from any text data}
-  gem.summary       = %q{Now zerp it..Into shape}
-  gem.homepage      = "TODO: public repo"
+  gem.summary       = %q{nmax}
+  gem.homepage      = "https://github.com/xfynx/ruby-nmax"
 
   gem.files = `git ls-files`.split($\)
   gem.executables = ["nmax"]

@@ -6,7 +6,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'nmax'
+gem 'nmax', git: 'git@github.com:xfynx/ruby-nmax.git'
 ```
 
 And then execute:
@@ -15,7 +15,9 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install nmax
+    $ git clone git@github.com:xfynx/ruby-nmax.git
+    $ cd ruby-nmax && gem build nmax
+    $ gem install ./nmax-0.1.0.gem
 
 ## Usage
 
@@ -24,5 +26,5 @@ Or install it yourself as:
 # гигабайтный файл с рандомными числобуквенными символами, табами и пробелами
 < /dev/urandom tr -dc "[:space:][:print:]" | head -c1000000000 > file
 # запуск экстрактора
-time cat file2 | bundle exec bin/nmax 1000
+time cat file2 | nmax 1000
 ```
