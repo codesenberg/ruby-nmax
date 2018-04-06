@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'nmax'
+
+# count of max numbers to return
+how_much = ARGV.shift.to_i
+
+result_array = []
+
+ARGF.each_with_index do |line, index|
+  result_array+=Nmax::Extractor.integers(line)
+  result_array=result_array.sort.reverse.take(how_much)
+  #puts index
+end
+
+puts result_array.sort.reverse.take(how_much).join(", ")
