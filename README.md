@@ -1,5 +1,5 @@
 # Nmax
-
+[![Build Status](https://travis-ci.org/xfynx/ruby-nmax.svg)](https://travis-ci.org/xfynx/ruby-nmax)
 
 ## Installation
 
