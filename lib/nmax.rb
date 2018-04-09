@@ -2,15 +2,22 @@ require 'nmax/accumulator'
 require 'nmax/extractor'
 require 'nmax/version'
 
-module Nmax
+# Программа nmax принимает один аргумент (N) — кол-во чисел и
+# осуществляет поиск N наибольших чисел во входном потоке (stdin).
+module NMax
   def self.run
-    # count of max numbers to return
-    how_much = ARGV.shift.to_i
+    how_much = (ARGV.shift || 100).to_i
 
-    accumulator = Nmax::Accumulator.new(how_much)
+    begin
+      accumulator = NMax::Accumulator.new(how_much)
 
-    ARGF.each_with_index { |line, i| accumulator.add(Nmax::Extractor.integers(line)) }
+      ARGF.each_line do |line|
+        accumulator.add(NMax::Extractor.integers(line))
+      end
 
-    puts accumulator.result.join(', ')
+      puts accumulator.result.join(', ')
+    rescue StandardError => ex
+      STDERR.puts ex.message
+    end
   end
 end
