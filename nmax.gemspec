@@ -2,7 +2,7 @@ lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'nmax/version'
-require 'english'
+require 'English'
 
 # rubocop:disable Style/WordArray
 

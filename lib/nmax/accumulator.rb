@@ -52,7 +52,7 @@ module NMax
         new_elems = data.select { |n| n > min }
       end
 
-      # Если новых чисел не найденно, то в @result уже содержаться
+      # Если новых чисел не найденно, то @result уже содержит
       # n наибольших чисел в порядке возрастания.
       return if new_elems.length.zero?
 
