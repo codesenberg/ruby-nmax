@@ -1,4 +1,5 @@
 require 'nmax/exceptions'
+require 'nmax/heap'
 
 module NMax
   # Accumulator используется для инкрементального поиска
@@ -16,7 +17,7 @@ module NMax
               "invalid size = #{size} provided"
       end
       @size = size
-      @result = []
+      @result = MinHeap.new()
 
       update!(data)
     end
@@ -35,35 +36,31 @@ module NMax
     end
 
     def result
-      @result.reverse
+      @result.to_a.sort.reverse
     end
 
     private
 
     def update!(data)
-      new_elems = nil
-      # Если найдено недостаточно чисел, то добавляем все.
-      if @result.length < @size
-        new_elems = data
-      else
-        # В противном случае, только те, что больше наименьшего из
-        # найденных чисел.
-        min = @result.first
-        new_elems = data.select { |n| n > min }
+      idx = 0
+      while @result.size < @size && idx < data.length
+        @result.push(data[idx])
+        idx += 1
       end
 
-      # Если новых чисел не найденно, то @result уже содержит
-      # n наибольших чисел в порядке возрастания.
-      return if new_elems.length.zero?
+      while idx < data.length
+        min = @result.min
+        new_elem = data[idx]
+        if new_elem < min
+          idx += 1
+          next
+        end
 
-      @result.concat(new_elems) && compact!
-    end
+        @result.extract_min
+        @result.push(new_elem)
 
-    def compact!
-      @result.sort!
-      # Оставляем только @size наибольших чисел (конец массива после
-      # сортировки).
-      @result.slice!(0, @result.length - @size)
+        idx += 1
+      end
     end
   end
 end

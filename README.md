@@ -17,7 +17,7 @@ Or install it yourself as:
 
     $ git clone git@github.com:codesenberg/ruby-nmax.git
     $ cd ruby-nmax && gem build nmax
-    $ gem install ./nmax-0.2.0.gem
+    $ gem install ./nmax-0.4.0.gem
 
 ## Usage
 
