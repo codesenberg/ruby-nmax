@@ -1,5 +1,6 @@
 require 'nmax/accumulator'
 require 'nmax/extractor'
+require 'nmax/scanner'
 require 'nmax/version'
 
 # Программа nmax принимает один аргумент (N) — кол-во чисел и
@@ -11,9 +12,8 @@ module NMax
     begin
       accumulator = NMax::Accumulator.new(how_much)
 
-      ARGF.each_line do |line|
-        accumulator.add(NMax::Extractor.integers(line))
-      end
+      scanner = Scanner.new(ARGF)
+      accumulator.add(NMax::Extractor.integers(scanner.text)) while scanner.scan
 
       puts accumulator.result.join(', ')
     rescue StandardError => ex

@@ -26,5 +26,5 @@ Or install it yourself as:
 # гигабайтный файл с рандомными числобуквенными символами, табами и пробелами
 < /dev/urandom tr -dc "[:space:][:print:]" | head -c1073741824 > file
 # запуск экстрактора
-time cat file2 | nmax 1000
+time cat file | nmax 1000
 ```
